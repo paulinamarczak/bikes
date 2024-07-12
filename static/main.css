@@ -1,9 +1,25 @@
-/* Optional CSS for additional styling */
-body, html {
+/* Define the Recoleta font */
+@font-face {
+    font-family: 'Recoleta';
+    src: url('../fonts/Recoleta-RegularDEMO.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Apply the Recoleta font to all elements */
+* {
+    font-family: 'Recoleta', serif;
+}
+
+
+/* Apply the Recoleta font to body and #layers-control */
+/* body, html {
     margin: 0;
     padding: 0;
     height: 100%;
-}
+    font-family: 'Recoleta', serif;
+} */
+
 #layers-control {
     position: absolute;
     top: 10px;
@@ -11,4 +27,5 @@ body, html {
     background: white;
     padding: 10px;
     z-index: 1000;
+    font-family: 'Recoleta', serif;
 }
