@@ -1,5 +1,6 @@
 // Initialize the map centered on Esquimalt
-var map = L.map('map').setView([48.4292, -123.3673], 13);
+var map = L.map('map').setView([48.4299, -123.415], 20
+);
 
 // Add a tile layer
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -7,8 +8,8 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 // Placeholder for georeferenced TIFF layers
-var layer1 = L.imageOverlay('/tiff/placeholder1.tiff', [[48.428, -123.369], [48.43, -123.365]]).addTo(map);
-var layer2 = L.imageOverlay('/tiff/placeholder2.tiff', [[48.428, -123.37], [48.43, -123.366]]);
+var layer1 = L.imageOverlay('/tiffs/placeholder1.tiff', [[48.428, -123.369], [48.43, -123.365]]).addTo(map);
+var layer2 = L.imageOverlay('/tiffs/placeholder2.tiff', [[48.428, -123.37], [48.43, -123.366]]);
 
 // Initially hide the layers
 layer1.remove();

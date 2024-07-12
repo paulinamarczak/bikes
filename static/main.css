@@ -1,31 +1,19 @@
-/* Define the Recoleta font */
-@font-face {
-    font-family: 'Recoleta';
-    src: url('../fonts/Recoleta-RegularDEMO.otf') format('opentype');
-    font-weight: normal;
-    font-style: normal;
+/* Additional styles */
+.sample-text {
+    font-family: 'Recoleta', serif;
+    font-size: 24px;
+    color: #333;
+    margin: 20px;
 }
 
-/* Apply the Recoleta font to all elements */
-* {
-    font-family: 'Recoleta', serif;
+/* Other styles specific to main.css */
+#file-list {
+    margin-bottom: 20px;
 }
 
-
-/* Apply the Recoleta font to body and #layers-control */
-/* body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    font-family: 'Recoleta', serif;
-} */
-
-#layers-control {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background: white;
-    padding: 10px;
-    z-index: 1000;
-    font-family: 'Recoleta', serif;
+.file-item {
+    cursor: pointer;
+    margin: 5px 0;
+    color: blue;
+    text-decoration: underline;
 }
