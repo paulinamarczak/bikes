@@ -7,13 +7,27 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
-// Placeholder for georeferenced TIFF layers
-var layer1 = L.imageOverlay('/tiffs/placeholder1.tiff', [[48.428, -123.369], [48.43, -123.365]]).addTo(map);
-var layer2 = L.imageOverlay('/tiffs/placeholder2.tiff', [[48.428, -123.37], [48.43, -123.366]]);
+
+// Create GeoTIFF layers
+var layer1 = new L.LeafletGeotiff('/tiffs/alternate_4326.tif', {
+    renderer: new L.LeafletGeotiff.Plotty({
+        displayMin: 0,
+        displayMax: 255,
+        colorScale: 'viridis'
+    })
+});
+
+var layer2 = new L.LeafletGeotiff('/tiffs/constance_4326.tif', {
+    renderer: new L.LeafletGeotiff.Plotty({
+        displayMin: 0,
+        displayMax: 255,
+        colorScale: 'viridis'
+    })
+});
 
 // Initially hide the layers
-layer1.remove();
-layer2.remove();
+map.removeLayer(layer1);
+map.removeLayer(layer2);
 
 // Layer control logic
 document.getElementById('layer1').addEventListener('change', function() {
