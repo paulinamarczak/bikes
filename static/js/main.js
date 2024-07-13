@@ -1,61 +1,49 @@
 // Initialize the map centered on Esquimalt
-var map = L.map('map').setView([48.4299, -123.415], 20
-);
+var map = L.map('map').setView([48.4299, -123.415], 20);
 
-// Add a tile layer
+// Add a tile layer from OpenStreetMap
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
-// Define the options for the GeoTIFF layer using the RGB renderer
-var options = {
-    renderer: new L.LeafletGeotiff.rgb({
-        rBand: 0,
-        gBand: 1,
-        bBand: 2,
-        alphaBand: 0,
-        transpValue: 0
-    })
-};
+// // Object to hold tile layers
+// var tileLayers = {};
 
-// Create GeoTIFF layers
-var layer1 = L.leafletGeotiff('/tiffs/alternate_4326.tif', options);
+// // Fetch tile layer directories from the server
+// fetch('/tile-directories')
+//     .then(response => response.json())
+//     .then(directories => {
+//         directories.forEach(directory => {
+//             var tileLayer = L.tileLayer(`/static/tiles/${directory}/{z}/{x}/{y}.png`, {
+//                 tms: true,
+//                 attribution: '&copy; Generated Tiles'
+//             });
 
-var layer2 = new L.LeafletGeotiff('/tiffs/constance_4326.tif', {
-    renderer: new L.LeafletGeotiff.rgb({
-        rBand: 0,
-        // Optional, band index to use as G-band
-        gBand: 1,
-        // Optional, band index to use as B-band
-        bBand: 2,
-        // band index to use as alpha-band
-        // NOTE: this can also be used in combination with transpValue, then referring to a
-        // color band specifying a fixed value to be interpreted as transparent
-        alphaBand: 0,
-        // for all values equal to transpValue in the band alphaBand, the newly created alpha
-        // channel will be set to 0 (transparent), all other pixel values will result in alpha 255 (opaque)
-        transpValue: 0,
-        renderer: renderer,
-    })
-});
+//             // Store the tile layer without adding it to the map
+//             tileLayers[directory] = tileLayer;
 
-// // Initially hide the layers
-// map.removeLayer(layer1);
-// map.removeLayer(layer2);
+//             // Create a checkbox for each layer
+//             var checkbox = document.createElement('input');
+//             checkbox.type = 'checkbox';
+//             checkbox.id = directory;
+//             checkbox.addEventListener('change', function() {
+//                 if (this.checked) {
+//                     tileLayers[directory].addTo(map);
+//                 } else {
+//                     map.removeLayer(tileLayers[directory]);
+//                 }
+//             });
 
-// // Layer control logic
-// document.getElementById('layer1').addEventListener('change', function() {
-//     if (this.checked) {
-//         layer1.addTo(map);
-//     } else {
-//         map.removeLayer(layer1);
-//     }
-// });
+//             // Create a label for the checkbox
+//             var label = document.createElement('label');
+//             label.htmlFor = directory;
+//             label.appendChild(document.createTextNode(directory));
 
-// document.getElementById('layer2').addEventListener('change', function() {
-//     if (this.checked) {
-//         layer2.addTo(map);
-//     } else {
-//         map.removeLayer(layer2);
-//     }
-// });
+//             // Append the checkbox and label to the layers control div
+//             var controlDiv = document.getElementById('layers-control');
+//             controlDiv.appendChild(checkbox);
+//             controlDiv.appendChild(label);
+//             controlDiv.appendChild(document.createElement('br'));
+//         });
+//     })
+//     .catch(error => console.error('Error fetching tile directories:', error));

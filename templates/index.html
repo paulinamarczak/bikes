@@ -6,21 +6,14 @@
     <title>Leaflet Map</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
-
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <script src="https://unpkg.com/geotiff/dist/geotiff.min.js"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/leaflet-geotiff-2@1.1.0/dist/leaflet-geotiff.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/leaflet-geotiff-2@1.1.0/dist/leaflet-geotiff-rgb.min.js"></script>
 </head>
 <body>
+    <h1>Leaflet Map</h1>
     <div id="map" style="height: 100vh;"></div>
-    <div id="layers-control">
-        <label><input type="checkbox" id="layer1" /> Layer 1</label><br />
-        <label><input type="checkbox" id="layer2" /> Layer 2</label><br />
+    <div id="layers-control" style="position: absolute; top: 10px; left: 10px; background: white; padding: 10px; z-index: 1000;">
+        <h2>Layers</h2>
     </div>
-    <div class="sample-text">This is a sample text to test the Recoleta font.</div>
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
 </html>
